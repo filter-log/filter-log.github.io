@@ -1,21 +1,16 @@
 {% assign label_type = include.type %}
 {% assign label_value = include.value %}
-{% assign label_category = include.category | default: "" %}
 
 {% case label_type %}
   {% when "group" %}
-    {% if label_value == "notice" or label_category == "notice_general" %}
-      공지
-    {% else %}
-      {% case label_value %}
-        {% when "11th" %}11기
-        {% when "12th" %}12기
-        {% else %}{{ label_value }}
-      {% endcase %}
-    {% endif %}
+    {% case label_value %}
+      {% when "notice" %}공지
+      {% when "11th" %}11기
+      {% when "12th" %}12기
+      {% else %}{{ label_value }}
+    {% endcase %}
   {% when "category" %}
     {% case label_value %}
-      {% when "notice_general" %}일반공지
       {% when "regular" %}정기출사
       {% when "flash" %}번개출사
       {% when "special" %}★ 특별편 ★

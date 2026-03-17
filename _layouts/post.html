@@ -1,25 +1,29 @@
 ---
 layout: default
 ---
-{% capture group_label %}{% include label-map.html type="group" value=page.group category=page.category %}{% endcapture %}
-{% capture category_label %}{% include label-map.html type="category" value=page.category %}{% endcapture %}
+{% capture group_label %}{% include label-map.html type="group" value=page.group %}{% endcapture %}
+{% if page.category != blank %}
+  {% capture category_label %}{% include label-map.html type="category" value=page.category %}{% endcapture %}
+{% endif %}
 
 <article class="post-page container">
   <header class="post-header">
     <div class="post-meta">
       <span>{{ page.date | date: "%Y.%m.%d" }}</span>
       <span>{{ group_label | strip }}</span>
-      <span>{{ category_label | strip }}</span>
+      {% if page.category != blank %}
+        <span>{{ category_label | strip }}</span>
+      {% endif %}
     </div>
     <h1>{{ page.title }}</h1>
-    {% if page.summary %}
+    {% if page.summary != blank %}
       <p class="post-summary">{{ page.summary }}</p>
     {% endif %}
   </header>
 
-  {% if page.coverImage %}
+  {% if page.coverImage != blank %}
     <figure class="post-cover">
-      <img src="{{ page.coverImage | relative_url }}" alt="{{ page.title }}">
+      <img src="{{ page.coverImage }}" alt="{{ page.title }}">
     </figure>
   {% endif %}
 

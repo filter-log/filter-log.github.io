@@ -17,14 +17,18 @@ permalink: /posts/
   {% if site.posts.size > 0 %}
     <div class="posts-list">
       {% for post in site.posts %}
-        {% capture group_label %}{% include label-map.html type="group" value=post.group category=post.category %}{% endcapture %}
-        {% capture category_label %}{% include label-map.html type="category" value=post.category %}{% endcapture %}
+        {% capture group_label %}{% include label-map.html type="group" value=post.group %}{% endcapture %}
+        {% if post.category != blank %}
+          {% capture category_label %}{% include label-map.html type="category" value=post.category %}{% endcapture %}
+        {% endif %}
         <article class="list-card">
           <a class="list-card__link" href="{{ post.url | relative_url }}">
             <div class="list-card__meta">
               <span>{{ post.date | date: "%Y.%m.%d" }}</span>
               <span>{{ group_label | strip }}</span>
-              <span>{{ category_label | strip }}</span>
+              {% if post.category != blank %}
+                <span>{{ category_label | strip }}</span>
+              {% endif %}
             </div>
             <h2>{{ post.title }}</h2>
             <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 170 }}</p>

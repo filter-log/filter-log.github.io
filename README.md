@@ -13,7 +13,7 @@
 
 - 동아리 운영진과 구성원이 코드 수정 없이 브라우저 UI에서 새 글을 작성할 수 있습니다.
 - 작성된 글은 자동으로 `_posts/`에 저장되어 기존 Jekyll 템플릿에서 바로 렌더링됩니다.
-- 대표 이미지와 본문 이미지는 `assets/images/`에 저장되어 경로 관리가 단순합니다.
+- 대표 이미지는 외부 이미지 레포 URL을 붙여넣는 방식이라, 운영진이 이미지 주소만 복사해 바로 사용할 수 있습니다.
 
 ## 주요 파일 구조
 
@@ -22,7 +22,6 @@
 - `_layouts/post.html`: 글 상세 레이아웃
 - `_includes/label-map.html`: 내부값을 화면용 라벨로 변환하는 공통 include
 - `_posts/`: 게시글 저장 위치
-- `assets/images/`: 대표 이미지와 본문 이미지 저장 위치
 - `.pages.yml`: Pages CMS 설정
 - `index.html`: 홈
 - `posts.html`: 전체 글 목록 소스 파일, 실제 페이지 경로는 `/posts/`
@@ -30,26 +29,28 @@
 ## Pages CMS 저장 구조
 
 - 새 글 저장 위치: `_posts/`
-- 대표 이미지 저장 위치: `assets/images/`
-- 본문 이미지 저장 위치: `assets/images/`
+- 대표 이미지 입력 방식: 외부 이미지 레포 URL 붙여넣기
+- 본문 입력 방식: Markdown 원문 복붙
 - 파일명 패턴: `"{year}-{month}-{day}-{group}-{hour}{minute}{second}.md"`
-- 본문 편집기: `rich-text`
+- 본문 편집기: `code` (`markdown`)
 
 ## Pages CMS에서 새 글 작성하는 기본 절차
 
 1. `https://app.pagescms.org/` 에 GitHub 계정으로 로그인합니다.
 2. `filter-log.github.io` 저장소와 운영 브랜치를 선택합니다.
 3. `블로그 글` 컬렉션에서 새 글을 생성합니다.
-4. 제목, 날짜, 대분류, 카테고리, 대표 이미지, 요약, 태그, 본문을 입력합니다.
+4. 제목, 날짜, 대분류, 카테고리, 대표 이미지 URL, 요약, 태그, 본문 Markdown을 입력합니다.
 5. 저장하면 `_posts/` 아래에 날짜 기반 파일명이 자동 생성됩니다.
 6. GitHub Pages가 이를 빌드해 사이트에 반영합니다.
 
 ## 운영진용 빠른 글쓰기 가이드
 
 - `group`은 기본값이 `11기`로 잡혀 있으니, 공지나 12기 글일 때만 바꾸면 됩니다.
-- `category`는 글 성격만 고르면 됩니다. 기수 정보는 `group`에서만 처리합니다.
+- 공지 글은 `group`을 `공지`로 두고 `category`는 비워 둡니다.
+- 공지가 아닌 글만 `category`를 고르면 됩니다. 기수 정보는 `group`에서만 처리합니다.
 - `summary`는 홈과 전체 글 목록에 보이는 짧은 소개입니다.
-- 본문에는 `일시 / 장소 / 참여 인원 / 활동 내용` 기본 템플릿이 자동으로 들어갑니다.
+- `coverImage`는 이미지 레포 갤러리에서 복사한 URL을 그대로 붙여넣습니다.
+- 본문은 Markdown 원문을 그대로 복붙하며, 기본 템플릿을 필요하면 그대로 사용합니다.
 - `게시하기`를 끄면 초안으로 저장되고 사이트에는 노출되지 않습니다.
 
 ## Pages CMS 필드 구성
@@ -58,11 +59,11 @@
 - `title`: 제목
 - `date`: 날짜
 - `group`: 대분류
-- `category`: 카테고리
-- `coverImage`: 대표 이미지
+- `category`: 카테고리, 공지 글은 비움
+- `coverImage`: 대표 이미지 URL
 - `summary`: 요약
 - `tags`: 태그 목록
-- `body`: 본문
+- `body`: 본문 Markdown
 - `published`: 게시 여부
 
 ## 내부값과 화면 표시값
@@ -82,7 +83,6 @@ Pages CMS의 선택 UI에서는 한글 라벨을 보여주지만, 실제 front m
 
 | 저장값 | 화면 표시 |
 | --- | --- |
-| `notice_general` | 일반공지 |
 | `regular` | 정기출사 |
 | `flash` | 번개출사 |
 | `special` | ★ 특별편 ★ |
@@ -91,9 +91,10 @@ Pages CMS의 선택 UI에서는 한글 라벨을 보여주지만, 실제 front m
 ## 현재 분류 구조
 
 - group: `notice`, `11th`, `12th`
-- category: `notice_general`, `regular`, `flash`, `special`, `exhibition`
+- category: `regular`, `flash`, `special`, `exhibition`
 
 기수 구분은 `group`에서만 처리합니다.
+공지 글은 `category`를 비워 둡니다.
 `category`에는 기수 정보를 넣지 않습니다.
 
 ## 운영 기준

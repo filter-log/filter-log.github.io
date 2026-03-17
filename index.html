@@ -24,12 +24,14 @@ title: 홈
 
   <div class="cards-grid">
     {% for post in site.posts limit:5 %}
-      {% capture group_label %}{% include label-map.html type="group" value=post.group category=post.category %}{% endcapture %}
-      {% capture category_label %}{% include label-map.html type="category" value=post.category %}{% endcapture %}
+      {% capture group_label %}{% include label-map.html type="group" value=post.group %}{% endcapture %}
+      {% if post.category != blank %}
+        {% capture category_label %}{% include label-map.html type="category" value=post.category %}{% endcapture %}
+      {% endif %}
       <article class="post-card">
-        <a href="{{ post.url | relative_url }}" class="post-card__image{% unless post.coverImage %} post-card__image--empty{% endunless %}">
-          {% if post.coverImage %}
-            <img src="{{ post.coverImage | relative_url }}" alt="{{ post.title }}">
+        <a href="{{ post.url | relative_url }}" class="post-card__image{% if post.coverImage == blank %} post-card__image--empty{% endif %}">
+          {% if post.coverImage != blank %}
+            <img src="{{ post.coverImage }}" alt="{{ post.title }}">
           {% else %}
             FILTER
           {% endif %}
@@ -38,7 +40,9 @@ title: 홈
           <div class="post-card__meta">
             <span>{{ post.date | date: "%Y.%m.%d" }}</span>
             <span>{{ group_label | strip }}</span>
-            <span>{{ category_label | strip }}</span>
+            {% if post.category != blank %}
+              <span>{{ category_label | strip }}</span>
+            {% endif %}
           </div>
           <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
           <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 120 }}</p>
@@ -57,7 +61,7 @@ title: 홈
 
   {% assign notice_count = 0 %}
   {% for post in site.posts %}
-    {% if post.group == "notice" or post.category == "notice_general" %}
+    {% if post.group == "notice" %}
       {% assign notice_count = notice_count | plus: 1 %}
     {% endif %}
   {% endfor %}
@@ -66,15 +70,13 @@ title: 홈
     <div class="notice-list">
       {% assign rendered_notice_count = 0 %}
       {% for post in site.posts %}
-        {% if post.group == "notice" or post.category == "notice_general" %}
+        {% if post.group == "notice" %}
           {% if rendered_notice_count < 3 %}
-            {% capture group_label %}{% include label-map.html type="group" value=post.group category=post.category %}{% endcapture %}
-            {% capture category_label %}{% include label-map.html type="category" value=post.category %}{% endcapture %}
+            {% capture group_label %}{% include label-map.html type="group" value=post.group %}{% endcapture %}
             <article class="notice-card">
               <div class="list-card__meta">
                 <span>{{ post.date | date: "%Y.%m.%d" }}</span>
                 <span>{{ group_label | strip }}</span>
-                <span>{{ category_label | strip }}</span>
               </div>
               <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
               <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 140 }}</p>
