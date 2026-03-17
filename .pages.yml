@@ -3,6 +3,7 @@ media:
   output: /assets/images
 
 settings:
+  hide: true
   content:
     merge: true
 
@@ -37,14 +38,12 @@ content:
         required: true
         options:
           format: yyyy-MM-dd
-      - name: summary
-        label: 요약
-        type: string
       - name: group
         label: 대분류
         type: select
         required: true
-        description: 기수 구분은 이 필드에서만 합니다.
+        default: "11th"
+        description: 현재 기본값은 11기입니다. 공지 글만 `공지`, 12기 글은 `12기`로 바꿔 주세요.
         options:
           values:
             - value: "notice"
@@ -57,7 +56,7 @@ content:
         label: 카테고리
         type: select
         required: true
-        description: 카테고리에는 기수 정보를 넣지 않습니다.
+        description: 기수는 여기서 고르지 않습니다. 정기출사면 `정기출사`, 공지면 `일반공지`를 선택해 주세요.
         options:
           values:
             - value: "notice_general"
@@ -73,14 +72,35 @@ content:
       - name: coverImage
         label: 대표 이미지
         type: image
+        description: 목록과 글 상세 상단에 보여줄 대표 이미지를 선택합니다.
         options:
           path: assets/images
+      - name: summary
+        label: 요약
+        type: string
+        description: 홈과 전체 글 목록에 보여줄 짧은 소개 문구입니다.
       - name: tags
         label: 태그
         type: string
         list: true
+        description: "예: 11기, 정기출사, 한강공원"
       - name: body
         label: 본문
         type: rich-text
+        default: |
+          ## 기본 정보
+
+          - 일시:
+          - 장소:
+          - 참여 인원:
+
+          ## 활동 내용
+
+          내용을 작성해 주세요.
         options:
           path: assets/images
+      - name: published
+        label: 게시하기
+        type: boolean
+        default: true
+        description: 켜두면 사이트에 바로 노출되고, 끄면 초안으로 저장되어 공개되지 않습니다.
