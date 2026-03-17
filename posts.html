@@ -1,6 +1,7 @@
 ---
 layout: default
 title: 전체 글
+permalink: /posts/
 ---
 <section class="container">
   <div class="section-head">
@@ -16,19 +17,27 @@ title: 전체 글
 </section>
 
 <section class="container page-section">
-  <div class="posts-list">
-    {% for post in site.posts %}
-      {% capture group_label %}{% include label-map.html type="group" value=post.group %}{% endcapture %}
-      {% capture category_label %}{% include label-map.html type="category" value=post.category %}{% endcapture %}
-      <article class="list-card">
-        <div class="list-card__meta">
-          <span>{{ post.date | date: "%Y.%m.%d" }}</span>
-          <span>{{ group_label | strip }}</span>
-          <span>{{ category_label | strip }}</span>
-        </div>
-        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-        <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 170 }}</p>
-      </article>
-    {% endfor %}
-  </div>
+  {% if site.posts.size > 0 %}
+    <div class="posts-list">
+      {% for post in site.posts %}
+        {% capture group_label %}{% include label-map.html type="group" value=post.group %}{% endcapture %}
+        {% capture category_label %}{% include label-map.html type="category" value=post.category %}{% endcapture %}
+        <article class="list-card">
+          <a class="list-card__link" href="{{ post.url | relative_url }}">
+            <div class="list-card__meta">
+              <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+              <span>{{ group_label | strip }}</span>
+              <span>{{ category_label | strip }}</span>
+            </div>
+            <h2>{{ post.title }}</h2>
+            <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 170 }}</p>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <p>아직 등록된 글이 없습니다. 새 게시글을 작성하면 이 페이지에 최신순으로 자동 표시됩니다.</p>
+    </div>
+  {% endif %}
 </section>

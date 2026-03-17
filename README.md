@@ -25,7 +25,7 @@
 - `assets/images/`: 대표 이미지와 본문 이미지 저장 위치
 - `.pages.yml`: Pages CMS 설정
 - `index.html`: 홈
-- `posts.html`: 전체 글 목록
+- `posts.html`: 전체 글 목록 소스 파일, 실제 페이지 경로는 `/posts/`
 
 ## Pages CMS 저장 구조
 
@@ -91,7 +91,7 @@ Pages CMS의 선택 UI에서는 한글 라벨을 보여주지만, 실제 front m
 
 - 블로그 글 작성은 11기부터 시작합니다.
 - 홈에서는 최신 글 5개와 최근 공지 3개를 자동으로 보여줍니다.
-- 전체 글 목록은 `posts.html` 에서 자동 생성됩니다.
+- 전체 글 목록은 `/posts/` 경로에서 자동 생성됩니다.
 - 글 상세 페이지 URL은 `/posts/:year/:month/:day/:title/` 형식을 사용합니다.
 
 ## 추후 기수 추가 방법

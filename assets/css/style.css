@@ -340,6 +340,14 @@ a {
   padding: 1.25rem;
 }
 
+.list-card__link {
+  display: block;
+}
+
+.list-card__link:hover h2 {
+  color: var(--accent);
+}
+
 .page-intro {
   margin-top: 1rem;
   padding: 1.4rem 1.5rem;
