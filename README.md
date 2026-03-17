@@ -32,7 +32,7 @@
 - 새 글 저장 위치: `_posts/`
 - 대표 이미지 저장 위치: `assets/images/`
 - 본문 이미지 저장 위치: `assets/images/`
-- 파일명 패턴: `"{year}-{month}-{day}-{primary}.md"`
+- 파일명 패턴: `"{year}-{month}-{day}-{group}-{hour}{minute}{second}.md"`
 - 본문 편집기: `rich-text`
 
 ## Pages CMS에서 새 글 작성하는 기본 절차
