@@ -7,14 +7,15 @@ permalink: /posts/
   <div class="section-head">
     <div>
       <h1>전체 글</h1>
-      <p>Jekyll이 `_posts/`의 Markdown 파일을 자동으로 수집해 이 목록에 출력합니다.</p>
+      {% <p>Jekyll이 `_posts/`의 Markdown 파일을 자동으로 수집해 이 목록에 출력합니다.</p> %}
     </div>
   </div>
-
+{%
   <div class="page-intro">
     제목, 날짜, 대분류, 카테고리, 요약이 최신순으로 정리됩니다. 내부 저장값은 영문값을 유지하고, 화면에는 한글 라벨로 변환해 보여줍니다.
   </div>
 </section>
+%}
 
 <section class="container page-section">
   {% if site.posts.size > 0 %}
