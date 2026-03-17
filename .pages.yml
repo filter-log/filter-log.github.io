@@ -42,8 +42,6 @@ content:
         label: 대분류
         type: select
         required: true
-        # default: "11th"
-        # description: 현재 기본값은 11기입니다. 공지 글만 `공지`, 12기 글은 `12기`로 바꿔 주세요.
         options:
           values:
             - value: "notice"
@@ -55,7 +53,6 @@ content:
       - name: category
         label: 카테고리
         type: select
-        # required: true
         description: 공지는 카테고리를 설정 x, 정기출사면 `정기출사`, 공지면 `일반공지`를 선택해 주세요.
         options:
           values:
