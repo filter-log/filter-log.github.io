@@ -1,0 +1,25 @@
+{% assign label_type = include.type %}
+{% assign label_value = include.value %}
+
+{% case label_type %}
+  {% when "group" %}
+    {% case label_value %}
+      {% when "notice" %}공지
+      {% when "11th" %}11기
+      {% when "12th" %}12기
+      {% else %}{{ label_value }}
+    {% endcase %}
+  {% when "category" %}
+    {% case label_value %}
+      {% when "notice_general" %}일반공지
+      {% when "regular_11" %}정기출사_11기
+      {% when "flash_11" %}번개출사_11기
+      {% when "special_11" %}★ 특별편 ★
+      {% when "regular_12" %}정기출사_12기
+      {% when "flash_12" %}번개출사_12기
+      {% when "special_12" %}★ 특별편 ★
+      {% else %}{{ label_value }}
+    {% endcase %}
+  {% else %}
+    {{ label_value }}
+{% endcase %}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title>FILTER sample cover</title>
+  <desc>Abstract sample cover for the FILTER_log blog.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#1d352d" />
+      <stop offset="100%" stop-color="#48675d" />
+    </linearGradient>
+    <linearGradient id="frame" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#f5efe1" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#dce6e2" stop-opacity="0.7" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <circle cx="1280" cy="220" r="220" fill="#ffffff" fill-opacity="0.08" />
+  <circle cx="1450" cy="740" r="300" fill="#ffffff" fill-opacity="0.05" />
+  <rect x="160" y="170" width="820" height="520" rx="28" fill="none" stroke="url(#frame)" stroke-width="10" />
+  <rect x="220" y="230" width="700" height="400" rx="18" fill="#f5efe1" fill-opacity="0.08" stroke="#f5efe1" stroke-opacity="0.45" stroke-width="3" />
+  <path d="M290 560l140-150 110 110 130-170 180 210" fill="none" stroke="#f5efe1" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" />
+  <circle cx="760" cy="335" r="46" fill="#f5efe1" fill-opacity="0.72" />
+  <text x="1060" y="430" fill="#f5efe1" font-family="'Cormorant Garamond', serif" font-size="92" letter-spacing="20">FILTER</text>
+  <text x="1060" y="515" fill="#f5efe1" font-family="'IBM Plex Sans KR', sans-serif" font-size="34" letter-spacing="4">OFFICIAL BLOG SAMPLE COVER</text>
+</svg>

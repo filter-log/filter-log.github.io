@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'ko' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% if page.title %}
+        {{ page.title }} | {{ site.title }}
+      {% else %}
+        {{ site.title }}
+      {% endif %}
+    </title>
+    <meta name="description" content="{{ page.summary | default: site.description | escape }}">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} 홈">
+            <span class="brand-mark">FILTER</span>
+            <span class="brand-text">{{ site.title }}</span>
+          </a>
+          <nav class="site-nav" aria-label="주요 메뉴">
+            <a href="{{ '/' | relative_url }}">홈</a>
+            <a href="{{ '/posts.html' | relative_url }}">전체 글</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="site-main">
+        {{ content }}
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-inner">
+          <p class="footer-title">{{ site.title }}</p>
+          <p class="footer-copy">{{ site.description }}</p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

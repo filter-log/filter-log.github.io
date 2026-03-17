@@ -1,0 +1,84 @@
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  - name: posts
+    label: 게시글
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    format: yaml-frontmatter
+    subfolders: false
+    view:
+      primary: title
+      fields: [title, date, group, category]
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: layout
+        label: 레이아웃
+        type: string
+        hidden: true
+        default: post
+      - name: title
+        label: 제목
+        type: string
+        required: true
+      - name: date
+        label: 날짜
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: summary
+        label: 요약
+        type: string
+      - name: group
+        label: 대분류
+        type: select
+        required: true
+        options:
+          values:
+            - value: "notice"
+              label: 공지
+            - value: "11th"
+              label: 11기
+            - value: "12th"
+              label: 12기
+      - name: category
+        label: 세부분류
+        type: select
+        required: true
+        options:
+          values:
+            - value: "notice_general"
+              label: 일반공지
+            - value: "regular_11"
+              label: 정기출사_11기
+            - value: "flash_11"
+              label: 번개출사_11기
+            - value: "special_11"
+              label: ★ 특별편 ★
+            - value: "regular_12"
+              label: 정기출사_12기
+            - value: "flash_12"
+              label: 번개출사_12기
+            - value: "special_12"
+              label: ★ 특별편 ★
+      - name: coverImage
+        label: 대표 이미지
+        type: image
+        options:
+          path: assets/images
+      - name: tags
+        label: 태그
+        type: string
+        list: true
+      - name: body
+        label: 본문
+        type: rich-text
+        options:
+          path: assets/images

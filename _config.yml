@@ -1,0 +1,5 @@
+title: FILTER_log
+description: "대학생연합 사진동아리 FILTER 블로그입니다! 매주 일요일 정기출사글이 업로드 됩니다:)"
+lang: ko
+timezone: Asia/Seoul
+permalink: /posts/:year/:month/:day/:title/
