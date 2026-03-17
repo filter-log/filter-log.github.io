@@ -2,7 +2,6 @@
 layout: default
 title: 홈
 ---
-{% assign recent_notices = site.posts | where_exp: "post", "post.group == 'notice' or post.category == 'notice_general'" %}
 
 <section class="container hero">
   <span class="hero-badge">Official Blog</span>
@@ -56,20 +55,33 @@ title: 홈
     </div>
   </div>
 
-  {% if recent_notices.size > 0 %}
+  {% assign notice_count = 0 %}
+  {% for post in site.posts %}
+    {% if post.group == "notice" or post.category == "notice_general" %}
+      {% assign notice_count = notice_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+
+  {% if notice_count > 0 %}
     <div class="notice-list">
-      {% for post in recent_notices limit:3 %}
-        {% capture group_label %}{% include label-map.html type="group" value=post.group category=post.category %}{% endcapture %}
-        {% capture category_label %}{% include label-map.html type="category" value=post.category %}{% endcapture %}
-        <article class="notice-card">
-          <div class="list-card__meta">
-            <span>{{ post.date | date: "%Y.%m.%d" }}</span>
-            <span>{{ group_label | strip }}</span>
-            <span>{{ category_label | strip }}</span>
-          </div>
-          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-          <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 140 }}</p>
-        </article>
+      {% assign rendered_notice_count = 0 %}
+      {% for post in site.posts %}
+        {% if post.group == "notice" or post.category == "notice_general" %}
+          {% if rendered_notice_count < 3 %}
+            {% capture group_label %}{% include label-map.html type="group" value=post.group category=post.category %}{% endcapture %}
+            {% capture category_label %}{% include label-map.html type="category" value=post.category %}{% endcapture %}
+            <article class="notice-card">
+              <div class="list-card__meta">
+                <span>{{ post.date | date: "%Y.%m.%d" }}</span>
+                <span>{{ group_label | strip }}</span>
+                <span>{{ category_label | strip }}</span>
+              </div>
+              <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p>{{ post.summary | default: post.excerpt | strip_html | truncate: 140 }}</p>
+            </article>
+            {% assign rendered_notice_count = rendered_notice_count | plus: 1 %}
+          {% endif %}
+        {% endif %}
       {% endfor %}
     </div>
   {% else %}
