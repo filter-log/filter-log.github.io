@@ -4,7 +4,7 @@ title: "FILTER 11기 첫 정기출사 기록"
 date: 2026-03-18
 summary: "FILTER 11기의 첫 정기출사를 소개하는 샘플 글입니다. 모임 분위기와 기록 방식을 확인할 수 있도록 작성되었습니다."
 group: "11th"
-category: "regular_11"
+category: "regular"
 coverImage: "/assets/images/filter-cover.svg"
 tags:
   - "11기"
@@ -25,7 +25,7 @@ tags:
 
 ## 운영 메모
 
-Pages CMS에서는 제목, 날짜, 요약, 대분류, 세부분류, 대표 이미지, 태그, 본문을 UI로 입력하면  
+Pages CMS에서는 제목, 날짜, 요약, 대분류, 카테고리, 대표 이미지, 태그, 본문을 UI로 입력하면
 이 파일처럼 `_posts/` 아래에 Markdown 글이 자동으로 저장됩니다.
 
 사진동아리 FILTER의 기록이 여기서부터 시작됩니다.

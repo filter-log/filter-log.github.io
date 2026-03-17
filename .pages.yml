@@ -2,9 +2,13 @@ media:
   input: assets/images
   output: /assets/images
 
+settings:
+  content:
+    merge: true
+
 content:
   - name: posts
-    label: 게시글
+    label: 블로그 글
     type: collection
     path: _posts
     filename: "{year}-{month}-{day}-{primary}.md"
@@ -40,6 +44,7 @@ content:
         label: 대분류
         type: select
         required: true
+        description: 기수 구분은 이 필드에서만 합니다.
         options:
           values:
             - value: "notice"
@@ -49,25 +54,22 @@ content:
             - value: "12th"
               label: 12기
       - name: category
-        label: 세부분류
+        label: 카테고리
         type: select
         required: true
+        description: 카테고리에는 기수 정보를 넣지 않습니다.
         options:
           values:
             - value: "notice_general"
               label: 일반공지
-            - value: "regular_11"
-              label: 정기출사_11기
-            - value: "flash_11"
-              label: 번개출사_11기
-            - value: "special_11"
+            - value: "regular"
+              label: 정기출사
+            - value: "flash"
+              label: 번개출사
+            - value: "special"
               label: ★ 특별편 ★
-            - value: "regular_12"
-              label: 정기출사_12기
-            - value: "flash_12"
-              label: 번개출사_12기
-            - value: "special_12"
-              label: ★ 특별편 ★
+            - value: "exhibition"
+              label: 전시회
       - name: coverImage
         label: 대표 이미지
         type: image

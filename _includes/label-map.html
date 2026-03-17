@@ -12,12 +12,10 @@
   {% when "category" %}
     {% case label_value %}
       {% when "notice_general" %}일반공지
-      {% when "regular_11" %}정기출사_11기
-      {% when "flash_11" %}번개출사_11기
-      {% when "special_11" %}★ 특별편 ★
-      {% when "regular_12" %}정기출사_12기
-      {% when "flash_12" %}번개출사_12기
-      {% when "special_12" %}★ 특별편 ★
+      {% when "regular" %}정기출사
+      {% when "flash" %}번개출사
+      {% when "special" %}★ 특별편 ★
+      {% when "exhibition" %}전시회
       {% else %}{{ label_value }}
     {% endcase %}
   {% else %}
