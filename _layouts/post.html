@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{% capture group_label %}{% include label-map.html type="group" value=page.group %}{% endcapture %}
+{% capture group_label %}{% include label-map.html type="group" value=page.group category=page.category %}{% endcapture %}
 {% capture category_label %}{% include label-map.html type="category" value=page.category %}{% endcapture %}
 
 <article class="post-page container">

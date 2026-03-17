@@ -20,7 +20,7 @@ permalink: /posts/
   {% if site.posts.size > 0 %}
     <div class="posts-list">
       {% for post in site.posts %}
-        {% capture group_label %}{% include label-map.html type="group" value=post.group %}{% endcapture %}
+        {% capture group_label %}{% include label-map.html type="group" value=post.group category=post.category %}{% endcapture %}
         {% capture category_label %}{% include label-map.html type="category" value=post.category %}{% endcapture %}
         <article class="list-card">
           <a class="list-card__link" href="{{ post.url | relative_url }}">
